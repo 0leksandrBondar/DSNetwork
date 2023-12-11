@@ -30,9 +30,12 @@ public:
     bool isValid() const;
 
 protected:
-    virtual void connectToSockAddr() = 0;
+    virtual void connectToSockAddr();
+    virtual std::string receivingMessage();
+    virtual void sendMessage(const char* message);
 
 protected:
+    std::string _dataReceived{};
     SOCKET _socketDescriptor{};
     sockaddr_in _address;
 };
